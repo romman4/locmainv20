@@ -3,8 +3,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.*;
 
 public class FileHandler {
-    File file;
-    String line, outFilePath, resultOfResponse;
+    private File file;
+    private String outFilePath;
 
     FileHandler(File f1, String fileName) {
         this.file = f1;
@@ -17,11 +17,11 @@ public class FileHandler {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while (reader.ready()) {
                 Thread.sleep(1000);
-                line = reader.readLine();
+                String line = reader.readLine();
                 app.loggingArea.append("Обрабатывается строка.............." + line + "\n");
                 Thread.sleep(1000);
                 Response response = new Response(line);
-                resultOfResponse = response.getResponse();
+                String resultOfResponse = response.getResponse();
                 app.loggingArea.append("Получен результат:        " + resultOfResponse + "\n");
                 writeToFile(line + ";" + resultOfResponse);
             }

@@ -12,21 +12,13 @@ import static javax.swing.SwingConstants.CENTER;
 
 public class GUI extends JFrame {
 
-    File selectedFile;
-    String outputPath, outputFilename = "avg_";
+    private File selectedFile;
+    private String outputPath, outputFilename = "avg_";
 
-    JButton getFileButton = new JButton("Выбрать исходный файл...");
-    JLabel fileInName = new JLabel("имя файла");
-
-    JButton getOutFileButton = new JButton("Выбрать путь для готового файла...");
-    JLabel fileOutPath= new JLabel("путь к готовому файлу");
-
-    JButton startHandlingBtn = new JButton("Начать обработку файла");
+    private JLabel fileInName = new JLabel("имя файла");
+    private JLabel fileOutPath= new JLabel("путь к готовому файлу");
 
     JTextArea loggingArea = new JTextArea();
-
-    JPanel panel1 = new JPanel();
-    JPanel panel2 = new JPanel();
 
     GUI() {
         super("Cell tower location app");
@@ -34,11 +26,14 @@ public class GUI extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new GridLayout(2, 1));
 
+        JPanel panel1 = new JPanel();
         panel1.setLayout(new GridLayout(2, 2, 10, 60));
+        JButton getFileButton = new JButton("Выбрать исходный файл...");
         getFileButton.setPreferredSize(new Dimension(20, 5));
         panel1.add(getFileButton);
         fileInName.setHorizontalAlignment(CENTER);
         panel1.add(fileInName);
+        JButton getOutFileButton = new JButton("Выбрать путь для готового файла...");
         getOutFileButton.setPreferredSize(new Dimension(20, 5));
         panel1.add(getOutFileButton);
         fileOutPath.setHorizontalAlignment(CENTER);
@@ -69,6 +64,7 @@ public class GUI extends JFrame {
         this.add(panel1);
 
 
+        JButton startHandlingBtn = new JButton("Начать обработку файла");
         startHandlingBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -89,6 +85,7 @@ public class GUI extends JFrame {
             }
         });
         startHandlingBtn.setPreferredSize(new Dimension(200, 50));
+        JPanel panel2 = new JPanel();
         panel2.add(startHandlingBtn);
         loggingArea.setBorder(new BorderUIResource.EtchedBorderUIResource());
         loggingArea.setColumns(60);
